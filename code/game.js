@@ -13,9 +13,11 @@ function getComputerChoice() {
     }
 }
 
+
 function getHumanChoice() {
     return prompt("rock, paper or scissors?");
 }
+
 
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
@@ -25,7 +27,7 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        console.log(`You won! Your choice: ${humanChoice}; Computer choice: ${computerChoice}.`);
+        console.log(`You won! Your choice: ${humanChoice}; Computer's choice: ${computerChoice}.`);
         humanScore += 1;
     }
     else if (
@@ -33,20 +35,42 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "rock" && computerChoice === "paper") ||
         (humanChoice === "paper" && computerChoice === "scissors")
     ) {
-        console.log(`You lost! Your choice: ${humanChoice}; Computer choice: ${computerChoice}.`);
+        console.log(`You lost! Your choice: ${humanChoice}; Computer's choice: ${computerChoice}.`);
         computerScore += 1;
     }
     else {
         console.log("It's a tie for the round.");
     }
+}
 
 
+function playGame() {
+    let computerSelection = getComputerChoice();
+    let humanSelection = getHumanChoice();
+    playRound(humanSelection, computerSelection);
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-let computerSelection = getComputerChoice();
-let humanSelection = getHumanChoice();
 
-playRound(humanSelection, computerSelection);
+// for loop that calls playgame 5 times
+for (let n = 0; n < 5; n++) {
+    playGame()
+}
+
+if (humanScore > computerScore) {
+    console.log(`You won the game!
+        Your score: ${humanScore}
+        Computer's score: ${computerScore}`)
+}
+else if (humanScore < computerScore) {
+    console.log(`You lost the game!
+        Your score: ${humanScore}
+        Computer's score: ${computerScore}`)
+}
+else {
+    console.log(`Game drawn
+        Your score: ${humanScore}
+        Computer's score: ${computerScore}`)
+}
