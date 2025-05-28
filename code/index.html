@@ -4,32 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
     <!-- <script src="game.js" defer></script> -->
+
 </head>
+
+
 <body>
     <div class="heading-main">
         <p>Rock Paper Scissors</p>
     </div>
-    <div class="choice">
-        <p>Pick your choice:</p>
-    </div>
-    <div class="all-buttons">
-        <button id="rock">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="150" viewBox="0 0 100 100">
-                <text x="50%" y="75%" font-size="80" dominant-baseline="middle" text-anchor="middle">✊</text>
-              </svg>              
-          </button>
-          <button id="paper">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="150" viewBox="0 0 100 100">
-                <text x="50%" y="75%" font-size="80" dominant-baseline="middle" text-anchor="middle">✋</text>
-            </svg>              
-          </button>
 
-          <button id="scissors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="150" viewBox="0 0 100 100">
-                <text x="50%" y="75%" font-size="80" dominant-baseline="middle" text-anchor="middle">✌️</text>
-              </svg>
-          </button>
+    <div class="prompt-rounds">
+        <p>How many rounds? (max. 10)</p>
+        <input type="number" id="roundInput" max="10" min="1">
+        <button>Play!</button>
+    </div>
+
+    <div class="main-game">
+        <div class="choice-text">
+            <p>Pick your choice:</p>
+        </div>
+        <div class="all-buttons">
+            <button id="rock">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="150" viewBox="0 0 100 100">
+                    <text x="50%" y="75%" font-size="80" dominant-baseline="middle" text-anchor="middle">✊</text>
+                  </svg>              
+              </button>
+              <button id="paper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="150" viewBox="0 0 100 100">
+                    <text x="50%" y="75%" font-size="80" dominant-baseline="middle" text-anchor="middle">✋</text>
+                </svg>              
+              </button>
+    
+              <button id="scissors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="150" viewBox="0 0 100 100">
+                    <text x="50%" y="75%" font-size="80" dominant-baseline="middle" text-anchor="middle">✌️</text>
+                  </svg>
+              </button>
+        </div>
     </div>
 
 </body>
