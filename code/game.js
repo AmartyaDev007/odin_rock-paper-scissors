@@ -32,7 +32,7 @@ promptPlayConfirmBtn.addEventListener("click", () => {
     promptGameSection.style.display = 'none';
     mainGameSection.style.display = 'block';
     totalRounds = parseInt(roundNumInput.value);
-    console.log(round);
+
 });
 
 
@@ -82,7 +82,7 @@ function getComputerChoice() {
 
 
 function checkRoundOverflow() { 
-    if (roundTracker >= round) {
+    if (roundTracker >= totalRounds) {
         allPlayerChoices.style.display = 'none';
         pickYourChoiceTxt.style.display = 'none';
 
