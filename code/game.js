@@ -3,7 +3,7 @@ let computerScore = 0;
 let humanChoice = null;
 let computerChoice = null;
 let roundTracker = 1;
-let round = null;
+let totalRounds = null;
 
 const promptPlayConfirmBtn = document.querySelector("#play-btn");
 const roundNumInput = document.querySelector("#roundInput")
@@ -31,7 +31,7 @@ promptPlayConfirmBtn.addEventListener("click", () => {
 
     promptGameSection.style.display = 'none';
     mainGameSection.style.display = 'block';
-    round = parseInt(roundNumInput.value);
+    totalRounds = parseInt(roundNumInput.value);
     console.log(round);
 });
 
