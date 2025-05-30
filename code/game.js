@@ -21,7 +21,12 @@ const playAgainPrompt = document.querySelector(".replay-game");
 const playerScoreSpan = document.querySelector("#player-score");
 const computerScoreSpan = document.querySelector("#computer-score");
 
+const currentRoundDisplay = document.querySelector("#display-crnt-rnd");
+const totalRoundDisplay = document.querySelector("#display-total-rnd");
 
+const resultFinal = document.querySelector("#results-final");
+
+const replayButton = document.querySelector("#replay-button");
 
 promptPlayConfirmBtn.addEventListener("click", () => {
     if (isNaN(Number(roundNumInput.value)) || roundNumInput.value > 10 || roundNumInput.value < 1) {
@@ -31,20 +36,30 @@ promptPlayConfirmBtn.addEventListener("click", () => {
 
     promptGameSection.style.display = 'none';
     mainGameSection.style.display = 'block';
+
     totalRounds = parseInt(roundNumInput.value);
+
+    totalRoundDisplay.textContent = totalRounds;
 
 });
 
 
-const currentRoundDisplay = document.querySelector("#display-crnt-rnd");
-const totalRoundDisplay = document.querySelector("display-total-rnd");
-
 const currentRoundWinner = document.querySelector("#who-won");
 
-
+function displayResult() { 
+    if (humanScore > computerScore) {
+        resultFinal.textContent = "Congratulations! You won the game!";
+    }
+    else if (humanScore < computerScore) {
+        resultFinal.textContent = "You lost the game!";
+    }
+    else {
+        resultFinal.textContent = "Game Drawn!";
+    }
+}
 
 function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase();
+
 
     if (
         (humanChoice === "rock" && computerChoice === "scissors") ||
@@ -86,61 +101,69 @@ function getComputerChoice() {
     }
 }
 
-
-function checkRoundOverflow() { 
-    if (roundTracker >= totalRounds) {
-        allPlayerChoices.style.display = 'none';
-        pickYourChoiceTxt.style.display = 'none';
-
-        resultDisplay.style.display = 'block';
-        playAgainPrompt.style.display = 'block';
-        return true;
-    }
-    return false;
-}
-
-
-function getPlayerChoice(target) {
-
-    switch(target.id) {
-        
-        case 'rock':
-            humanChoice = "rock";
-            roundTracker += 1;
-            break;
-
-        case 'paper':
-            humanChoice = "paper";
-            roundTracker += 1;
-            break;
-
-        case 'scissors':
-            humanChoice = "scissors";
-            roundTracker += 1;
-            break;
-    }
-    playRound(humanChoice, computerChoice);
-}
-
-
 allPlayerChoices.addEventListener('click', (event) => {
-    
+
     let target = event.target.closest('button');
+
+    let playerActualChoice;
+    switch(target.id) {
+        case 'rock':
+            playerActualChoice = "rock";
+            break;
+        case 'paper':
+            playerActualChoice = "paper";
+            break;
+        case 'scissors':
+            playerActualChoice = "scissors";
+            break;
+        default:
+            return; 
+    }
+
+    humanChoice = playerActualChoice; 
 
     computerChoice = getComputerChoice();
 
-    if (checkRoundOverflow() == false) {
-        getPlayerChoice(target);
+    playRound(humanChoice, computerChoice); 
+
+    if (roundTracker >= totalRounds) {
+
+        allPlayerChoices.style.display = 'none';
+        pickYourChoiceTxt.style.display = 'none';
+        resultDisplay.style.display = 'block';
+        playAgainPrompt.style.display = 'block';
+        displayResult();
+    } else {
+        roundTracker++;
+        currentRoundDisplay.textContent = roundTracker;
     }
+});
+
+replayButton.addEventListener('click', () => {
+    humanScore = 0;
+    computerScore = 0;
+    humanChoice = null;
+    computerChoice = null;
+    roundTracker = 1;
+    totalRounds = null;
+
+    playerScoreSpan.textContent = '0';
+    computerScoreSpan.textContent = '0';
+    currentRoundDisplay.textContent = '1';
+    totalRoundDisplay.textContent = '';
+    currentRoundWinner.textContent = 'Pick your choice:';
+    resultFinal.textContent = '';
+
+    roundNumInput.value = '';
+
+
+    resultDisplay.style.display = 'none';
+    playAgainPrompt.style.display = 'none';
+    promptGameSection.style.display = 'block';
+    mainGameSection.style.display = 'none';
+    allPlayerChoices.style.display = 'block';
+    pickYourChoiceTxt.style.display = 'block';
 
 })
-
-// here is where you will add result reset :) 
-
-// add divs for , current round , total rounds and result of the current round : ) 
-
-
-
-
 
 
