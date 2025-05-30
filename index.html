@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- <script src="game.js" defer></script> -->
+    <!-- <link rel="stylesheet" href="code/styles.css"> -->
+    <script src="code/game.js" defer></script>
 
 </head>
 
 
 <body>
     <div class="heading-main">
-        <p>Rock Paper Scissors</p>
+        <h1>Rock Paper Scissors</h1>
     </div>
-    
+
     <div class="prompt-rounds">
         <p>How many rounds? (max. 10)</p>
         <input type="number" id="roundInput" max="10" min="1">
-        <button>Play!</button>
+        <button id="play-btn">Play!</button>
     </div>
 
-    <div class="main-game">
-        <div class="choice-text">
+    <div class="main-game" style="display: none">
+        <div class="choice-text" style = "display: block">
             <p>Pick your choice:</p>
         </div>
-        <div class="all-buttons">
+        <div class="all-buttons" style="width: fit-content; display: block">
             <button id="rock">
                 <img src="media/rock.svg" alt="rock-hand-gesture">       
               </button>
@@ -36,9 +36,19 @@
                 <img src="media/scissors.svg" alt="scissors-hand-gesture">
               </button>
         </div>
+        <div class="score-display">
+            <h1>Scores:</h1>
+            <p>Your score: <span id="player-score"></span></p>
+            <p>Enemy score: <span id="computer-score"></span></p>
+        </div>
+        <div class="results-display" style = "display: none">
+            <h1>Result!</h1>
+            <p></p>
+        </div>
+        <div class="replay-game" style = "display: none">
+            <button>Play again</button>
+        </div>
     </div>
-
-
 
 </body>
 </html>
