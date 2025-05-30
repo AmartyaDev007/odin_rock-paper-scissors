@@ -165,5 +165,3 @@ replayButton.addEventListener('click', () => {
     pickYourChoiceTxt.style.display = 'block';
 
 })
-
-
