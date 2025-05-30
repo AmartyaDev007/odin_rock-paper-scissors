@@ -36,7 +36,10 @@ promptPlayConfirmBtn.addEventListener("click", () => {
 });
 
 
+const currentRoundDisplay = document.querySelector("#display-crnt-rnd");
+const totalRoundDisplay = document.querySelector("display-total-rnd");
 
+const currentRoundWinner = document.querySelector("#who-won");
 
 
 
@@ -50,6 +53,7 @@ function playRound(humanChoice, computerChoice) {
     ) {
         humanScore += 1;
         playerScoreSpan.textContent = humanScore;
+        currentRoundWinner.textContent = "YOU WON THE ROUND!";
     }
     else if (
         (humanChoice === "scissors" && computerChoice === "rock") ||
@@ -58,9 +62,11 @@ function playRound(humanChoice, computerChoice) {
     ) {
         computerScore += 1;
         computerScoreSpan.textContent = computerScore;
+        currentRoundWinner.textContent = "YOU LOST THE ROUND!";
     }
     else {
         console.log("It's a tie for the round.");
+        currentRoundWinner.textContent = "It's a tie for the round.";
     }
     console.log(roundTracker);
 }
